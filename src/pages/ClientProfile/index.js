@@ -71,7 +71,7 @@ const ClientProfile = () => {
         <UserInfoForm>
             {clientInfo?.user?.profile_image?
             <Avatar
-            src={`${SERVER_BASE_URL}${clientInfo.user.profile_image}`} />:
+            src={`${clientInfo.user.profile_image}`} />:
             <Avatar
             style={{width:'200px', height:'200px'}}
             src={userImg}

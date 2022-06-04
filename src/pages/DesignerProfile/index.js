@@ -107,7 +107,7 @@ const DesignerProfile = () => {
         <UserInfoForm>
             {userInfo?.user?.profile_image &&
             <Avatar
-            src={`${SERVER_BASE_URL}${userInfo?.user?.profile_image}`} />
+            src={`${userInfo?.user?.profile_image}`} />
             }
             <div css={userInfoContent}>
             <h2>{userInfo?.user?.username}님</h2> 
