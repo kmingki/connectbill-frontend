@@ -6,6 +6,7 @@ const PortfolioCardContainer = styled.div`
     justify-content: space-between;
     border-bottom: 2px solid #e6e7eb;
     margin: 50px 0;
+    padding: 30px 0;
 `
 
 const NameWrapper = styled.div`
