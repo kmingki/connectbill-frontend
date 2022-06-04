@@ -1,0 +1,16 @@
+.join {
+    width:80%;
+    height:40px;
+    margin-top:40px;
+    margin-left:20px;
+    border-style:solid; 
+    border-width:2; 
+    border-color:white; 
+    border-radius:10px; 
+    background-color:antiquewhite;
+    color:brown;
+}
+.join:hover {
+    background-color: rgb(180, 102, 102);
+    color: antiquewhite;
+}

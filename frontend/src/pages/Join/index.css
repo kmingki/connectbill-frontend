@@ -1,0 +1,34 @@
+.join_cli {
+    position:absolute;
+    width:20%;
+    height:40px;
+    margin-top:-220px;
+    margin-left:90px;
+    border-style:solid; 
+    border-width:2; 
+    border-color:white; 
+    border-radius:10px; 
+    background-color:antiquewhite;
+    color:brown;
+}
+.join_cli:hover {
+    background-color: rgb(180, 102, 102);
+    color: antiquewhite;
+}
+.join_des {
+    position:absolute;
+    width:20%;
+    height:40px;
+    margin-top:-220px;
+    margin-left:290px;
+    border-style:solid; 
+    border-width:2; 
+    border-color:white; 
+    border-radius:10px; 
+    background-color:antiquewhite;
+    color:brown;
+}
+.join_des:hover {
+    background-color: rgb(180, 102, 102);
+    color: antiquewhite;
+}

@@ -1,0 +1,17 @@
+.submit {
+    position : absolute;
+    width:120px;
+    height:40px;
+    margin-top:50px;
+    margin-left:670px;
+    border-style:solid; 
+    border-width:2; 
+    border-color:white; 
+    border-radius:10px; 
+    background-color:rgb(200, 242, 221);
+    color:rgb(0, 77, 37);
+}
+.submit:hover {
+    background-color: rgb(19, 128, 61);
+    color: white;
+}
