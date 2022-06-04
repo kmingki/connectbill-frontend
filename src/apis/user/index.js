@@ -15,7 +15,7 @@ const login = async (data) =>{
 const logout = async () =>{
     try {
         const token = localStorage.getItem('token');
-        await instance.post('http://localhost:8000/api/auth/logout', {
+        await instance.post('/api/auth/logout', {
             headers: { 
                 "Content-Type": `application/json`,
                 Authorization : "Token" + token,
