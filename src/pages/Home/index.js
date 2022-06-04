@@ -46,11 +46,12 @@ const HomePage = () => {
                 <ul style={{display:'flex', flexWrap: "wrap", listStyle:"none", paddingLeft: '0px'}}>
                 {portfolios.map((portfolio, index)=>{
                     return (
-                        <li style={{margin: '20px'}}>
+                        <li>
                         <div key={index} popol-id={portfolio.id} onClick={()=>onClickPortfolio(portfolio.id)}>
                             <Card
+                            style={{width: '300px'}}
                             hoverable
-                            cover={<img width='300px' height ='300px' alt="example" src={`${SERVER_BASE_URL}${portfolio.profile_image}`} />}>
+                            cover={<img width={'300px'} height ={'300px'} style={{objectFit: 'cover'}} alt="example" src={`${SERVER_BASE_URL}${portfolio.profile_image}`} />}>
                             <Card.Meta 
                             title={<div style={{position: 'relative', top:'2px'}}>{portfolio.username} 님</div>}
                             description={<Rate defaultValue={portfolio.average_stars} disabled/>}
@@ -69,18 +70,24 @@ const HomePage = () => {
                     <div>고객 후기를 둘러보세요</div>
                     <button onClick={()=>navigate('/reviews')}style={{cursor: 'pointer',border: 0, outline:0,width:'70px',fontSize:'12px', backgroundColor:'#F5D5CB',appearance: "none", borderRadius:'5px', }}>더보기+</button> 
                 </div>
-                <div className='portfolio-container' style={{width: '100%', display: 'flex', flexWrap: "wrap"}}>
+                <ul style={{display:'flex', flexWrap: "wrap", listStyle:"none", paddingLeft: '0px'}}>
+                
                     {requests.map((request)=>
-                        <Card
-                        hoverable
-                        cover={<img width='300px' height ='300px' style={{objectFit: 'cover'}}alt="example" src={`${SERVER_BASE_URL}${request.small_image}`} />}
-                        >
-                        <Card.Meta 
-                        avatar={<Avatar src={request.profile_image} />} 
-                        title={<div style={{position: 'relative', top:'2px'}}>{request.title}</div>}
-                        description={<>{request.description}</>} /> 
-                    </Card>)}
-                </div>
+                    <li>
+                    <Card
+                    style={{width: '300px'}}
+                    hoverable
+                    cover={<img width={'300px'} height ={'300px'} style={{objectFit: 'cover'}}alt="example" src={`${SERVER_BASE_URL}${request.small_image}`} />}
+                    >
+                    <Card.Meta 
+                    avatar={<Avatar src={request.profile_image} />} 
+                    title={<div style={{position: 'relative', top:'2px'}}>{request.title}</div>}
+                    description={<>{request.description}</>} /> 
+                </Card>
+                </li>
+                        )}
+                </ul>
+                
             </div>
         </div>
         <Footer />
