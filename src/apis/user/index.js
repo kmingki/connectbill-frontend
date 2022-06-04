@@ -18,7 +18,7 @@ const logout = async () =>{
         await instance.post('/api/auth/logout', {
             headers: { 
                 "Content-Type": `application/json`,
-                Authorization : "Token" + token,
+                Authorization : "Token " + token,
             }});
         
 
