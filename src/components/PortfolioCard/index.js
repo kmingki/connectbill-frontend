@@ -3,6 +3,7 @@ import { PortfolioCardContainer, NameWrapper, DescriptionWrapper, ProjectWrapper
 import Avatar from 'components/Avatar/index.js';
 import { Rate } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 const PortfolioCard = ({portfolio}) => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const PortfolioCard = ({portfolio}) => {
         
         <PortfolioCardContainer onClick={onClickProfolio}>
             <div style={{width: '200px'}}>
-            <Avatar src={`http://127.0.0.1:8000${portfolio?.profile_image}`} shape="square" ></Avatar>
+            <Avatar src={`${SERVER_BASE_URL}${portfolio?.profile_image}`} shape="square" ></Avatar>
             <NameWrapper>{portfolio?.username}</NameWrapper>
             <NameWrapper>{portfolio?.skills}</NameWrapper>
             </div>

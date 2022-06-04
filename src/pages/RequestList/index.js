@@ -5,6 +5,7 @@ import {  HeartTwoTone, DownOutlined, MessageOutlined, LikeOutlined, StarOutline
 import 'antd/dist/antd.min.css';
 import { Link } from 'react-router-dom';
 import { getRequests } from '../../apis/request';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 const menu = (
     <Menu>
@@ -116,12 +117,12 @@ const RequestList = () => {
                         style={{objectFit: 'cover'}}
                         width={'300px'}
                         alt="logo"
-                        src={`http://localhost:8000${item.small_image}`}
+                        src={`${SERVER_BASE_URL}${item.small_image}`}
                     />
                     }
                 >
                     <List.Item.Meta
-                    avatar={<Avatar style={{width:'80px', height:'80px'}}src={`http://localhost:8000${item.client_profile_image}`} />}
+                    avatar={<Avatar style={{width:'80px', height:'80px'}}src={`${SERVER_BASE_URL}${item.client_profile_image}`} />}
                     title={<Link to={`/request/${item.id}`}><h3 style={{marginLeft:"10px"}}>{item.title}</h3></Link>}
                     description={<div style={{marginLeft:"25px"}}>{item.client_name} 님의 의뢰 ({item.client_company_name})</div>}
                     />

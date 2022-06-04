@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { CardWrapper } from './style';
 import { Rate } from 'antd';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 /**
  * 
  client: null
@@ -38,7 +39,7 @@ const ProjectCard = ({ project }) => {
                     <div>의뢰자 : {project.client}</div>
                 </div>
                 <div>
-                    <img src={`http://localhost:8000${project.small_image}`} width="300px"/>
+                    <img alt="프로젝트사진" src={`${SERVER_BASE_URL}${project.small_image}`} width="300px"/>
                 </div>
             </div>
             <div id={`project-${project.id}`} style={{border: '2px solid #f1f0f5', borderRadius: '5%', padding: '40px'}}></div>

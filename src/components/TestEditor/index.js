@@ -3,7 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { postProject } from 'apis/project';
 import axios from 'axios';
-
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 
 const QuillEditor = () => {
@@ -34,12 +34,12 @@ const QuillEditor = () => {
 
             const token = localStorage.getItem('token');
             axios.defaults.headers.common['Authorization'] = "Token "+token;
-            axios.post('http://localhost:8000/api/portfolio/projects/image_handler', 
+            axios.post(`${SERVER_BASE_URL}/api/portfolio/projects/image_handler`, 
             formData)
             .then((res) => {
                 console.log(res.data)
                 const range = this.quill.getSelection();
-                this.quill.insertEmbed(range.index, 'image', 'http://localhost:8000/'+ res.data['file_path']);
+                this.quill.insertEmbed(range.index, 'image', `${SERVER_BASE_URL}/`+ res.data['file_path']);
             })
             .catch((error) => {
                 console.error(error);

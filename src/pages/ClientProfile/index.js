@@ -14,26 +14,15 @@ import { getProfileInfo } from '../../apis/user';
 import { Link } from 'react-router-dom';
 import userImg from '../../assets/user.png';
 import { patchSelectDesigner, patchEndCommission } from '../../apis/request';
-const IconText = ({ icon, text }) => (
-    <Space>
-      {React.createElement(icon)}
-      {text}
-    </Space>
-  );
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
   
 const ClientProfile = () => {
     const [ clientInfo, setClientInfo ] = useState({});
     const [ messages, setMessages ] = useState([]);
     const [modal, setModal] = useState(false);
-    const { id } = useParams();
-    const { search } = useLocation();
-    const query = new URLSearchParams(search);
     const [ activeTab, setActiveTab] = useState("request");
-    const [user, setUser]  = useRecoilState(userState);
     const navigate = useNavigate();
-
-    //console.log(messages);
 
     const loadClientInfo = async () => {
         const result = await getProfileInfo();
@@ -44,11 +33,7 @@ const ClientProfile = () => {
     }
 
     useEffect(()=>{
-        
-        
         loadClientInfo();
-        
-       
     },[]);
 
     const onClickTab = (key) => {
@@ -86,7 +71,7 @@ const ClientProfile = () => {
         <UserInfoForm>
             {clientInfo?.user?.profile_image?
             <Avatar
-            src={`http://localhost:8000${clientInfo.user.profile_image}`} />:
+            src={`${SERVER_BASE_URL}${clientInfo.user.profile_image}`} />:
             <Avatar
             style={{width:'200px', height:'200px'}}
             src={userImg}
@@ -144,7 +129,7 @@ const ClientProfile = () => {
                             height={'300px'}
                             alt="logo"
                             style={{objectFit: 'cover'}}
-                            src={`http://localhost:8000${item.small_image}`}
+                            src={`${SERVER_BASE_URL}${item.small_image}`}
                         />
                 }
             >
@@ -167,7 +152,7 @@ const ClientProfile = () => {
                            <div key={designer.designer_id} 
                           onClick={()=>navigate(`/portfolio/${parseInt(designer.designer_portfolio_id, 10)}`)} 
                           style={{display: 'flex',  alignItems: 'center', margin:'0', padding:'0', cursor:"pointer"}}>
-                          <Avatar style={{width:'50px', height:'50px', marginRight:'10px'}} src={`http://localhost:8000${designer.designer_profile_image}`}/>
+                          <Avatar style={{width:'50px', height:'50px', marginRight:'10px'}} src={`${SERVER_BASE_URL}${designer.designer_profile_image}`}/>
                           {designer.designer_username} 
                           <Rate style={{marginLeft:'10px', width :'150px'}} disabled defaultValue={designer.designer_average_stars} />   
                           {designer.message}
@@ -209,7 +194,7 @@ const ClientProfile = () => {
                             height={'200px'}
                             alt="logo"
                             style={{objectFit: 'cover'}}
-                            src={`http://localhost:8000${item.small_image}`}
+                            src={`${SERVER_BASE_URL}${item.small_image}`}
                             />
                     }
                 >
@@ -246,7 +231,7 @@ const ClientProfile = () => {
                     width={272}
                     height={250}
                     alt="logo"
-                    src={`http://localhost:8000${item.small_image}`}
+                    src={`${SERVER_BASE_URL}${item.small_image}`}
                 />
                 }
             >
@@ -271,7 +256,7 @@ const ClientProfile = () => {
             <h2>프로필 수정</h2>
             {clientInfo?.user?.profile_image?
             <Avatar 
-            src={`http://localhost:8000${clientInfo.user.profile_image}`} />:
+            src={`${SERVER_BASE_URL}${clientInfo.user.profile_image}`} />:
             <Avatar
             src={userImg}
             shape="square" />

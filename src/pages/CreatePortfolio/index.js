@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainMenu from '../../components/MainMenu';
 import { Button } from 'antd';
 import axios from 'axios';
@@ -11,6 +11,8 @@ import { useInput } from 'utils/useInput';
 import moment from 'moment';
 import { loadMyInfo } from '../../apis/user';
 import { MailOutlined, PhoneOutlined } from '@ant-design/icons'
+import { SERVER_BASE_URL } from '../../utils/constants.js';
+
 const columns = [
     {
       title: '취득 기간',
@@ -82,7 +84,7 @@ const CreatePortfolioPage = () => {
         navigate('/sda');
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = "Token "+token;
-        axios.post('http://localhost:8000/api/portfolio/create_portfolio', 
+        axios.post(`${SERVER_BASE_URL}/api/portfolio/create_portfolio`, 
         {'certificates': certificates,
         'educationcareers': educationcareers,
         'content': content

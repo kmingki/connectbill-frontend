@@ -15,6 +15,7 @@ import { getProfileInfo } from '../../apis/user';
 import { Link } from 'react-router-dom';
 import { getProject } from 'apis/project';
 import { postDeleteMessage } from 'apis/user';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 const columns = [
     {
@@ -106,7 +107,7 @@ const DesignerProfile = () => {
         <UserInfoForm>
             {userInfo?.user?.profile_image &&
             <Avatar
-            src={`http://localhost:8000${userInfo?.user?.profile_image}`} />
+            src={`${SERVER_BASE_URL}${userInfo?.user?.profile_image}`} />
             }
             <div css={userInfoContent}>
             <h2>{userInfo?.user?.username}님</h2> 
@@ -172,7 +173,7 @@ const DesignerProfile = () => {
                       width: 240,
                       
                     }}
-                    cover={<img width='240px' height='240px' alt="example" src={`http://localhost:8000${project.small_image}`} />}
+                    cover={<img width='240px' height='240px' alt="example" src={`${SERVER_BASE_URL}${project.small_image}`} />}
                     //프로젝트 관련 추가한 코드
                     onClick={()=>onClickProject(project.id)}
                   >
@@ -201,7 +202,7 @@ const DesignerProfile = () => {
                         <img
                                 width={272}
                                 alt="logo"
-                                src={`http://localhost:8000${item.small_image}`}
+                                src={`${SERVER_BASE_URL}${item.small_image}`}
                             />
                     }
                 >
@@ -232,7 +233,7 @@ const DesignerProfile = () => {
                                 width={202}
                                 height={200}
                                 alt="logo"
-                                src={`http://localhost:8000${item.small_image}`}
+                                src={`${SERVER_BASE_URL}${item.small_image}`}
                             />
                     }
                 >

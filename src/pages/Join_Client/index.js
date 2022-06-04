@@ -9,7 +9,7 @@ import Background from "../../components/Background";
 import { useNavigate } from "react-router-dom";
 import './index.css';
 import axios from "axios";
-
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 function JoinClientPage() {
     const [userInfo, setUserInfo] = useState({
@@ -26,7 +26,7 @@ function JoinClientPage() {
 
     const onClickSubmit = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/auth/register_client', userInfo, {headers: { "Content-Type": `application/json`}})
+        axios.post(`${SERVER_BASE_URL}/api/auth/register_client`, userInfo, {headers: { "Content-Type": `application/json`}})
         .then((res) => {
             navigate("/",  { replace: true });
         })

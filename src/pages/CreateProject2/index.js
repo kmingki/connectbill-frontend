@@ -14,6 +14,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 const CreateProjectPage2 = ({ }) => {
   
@@ -65,12 +66,12 @@ const CreateProjectPage2 = ({ }) => {
       
           const token = localStorage.getItem('token');
           axios.defaults.headers.common['Authorization'] = "Token "+token;
-          axios.post('http://localhost:8000/api/portfolio/projects/image_handler', 
+          axios.post(`${SERVER_BASE_URL}/api/portfolio/projects/image_handler`, 
           formData)
           .then((res) => {
               console.log(res.data)
               const range = this.quill.getSelection();
-              this.quill.insertEmbed(range.index, 'image', 'http://localhost:8000/'+ res.data['file_path']);
+              this.quill.insertEmbed(range.index, 'image', `${SERVER_BASE_URL}/`+ res.data['file_path']);
           })
           .catch((error) => {
               console.error(error);

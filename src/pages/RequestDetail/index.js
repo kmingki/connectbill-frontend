@@ -9,6 +9,7 @@ import { HeartOutlined, ShareAltOutlined } from '@ant-design/icons';
 import { getRequest, patchApplyDesigner } from '../../apis/request';
 import { useParams } from 'react-router-dom';
 import { useInput } from '../../utils/useInput.js';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 const dummy = {
     'id' : 2,
@@ -97,7 +98,7 @@ const RequestDetail = () => {
                     request?.commission?.commission_image && 
                     <PanoramaWrapper>
                         <a-scene class="aframebox" embedded>
-                        <a-sky src={`http://localhost:8000${request?.commission?.commission_image}`}
+                        <a-sky src={`${SERVER_BASE_URL}${request?.commission?.commission_image}`}
                         rotation="0 -130 0" >
                         </a-sky>
                         </a-scene>
@@ -118,7 +119,7 @@ const RequestDetail = () => {
                 
                 <div style={{margin: "10px auto", fontSize: '15px', display:'flex', flexDirection: 'column',
                 justifyContent:'center', alignItems:'center'}}>
-                <Avatar src={`http://localhost:8000${request?.commission?.client_profile_image}`}></Avatar>
+                <Avatar src={`${SERVER_BASE_URL}${request?.commission?.client_profile_image}`}></Avatar>
                 <div>{request?.commission?.client_username}</div>
                 <div>{request?.commission?.client_company_name}</div>
                 </div>

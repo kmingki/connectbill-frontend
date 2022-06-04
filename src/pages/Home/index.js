@@ -7,6 +7,8 @@ import 'antd/dist/antd.min.css';
 import { Link } from 'react-router-dom';
 import { getRequestsMain} from '../../apis/request';
 import { useNavigate } from 'react-router-dom';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
+
 const HomePage = () => {
     const [portfolios, setPortfolios] = useState([]);
     const [requests , setRequests] = useState([]);
@@ -48,7 +50,7 @@ const HomePage = () => {
                         <div key={index} popol-id={portfolio.id} onClick={()=>onClickPortfolio(portfolio.id)}>
                             <Card
                             hoverable
-                            cover={<img alt="example" src={`http://localhost:8000${portfolio.profile_image}`} />}>
+                            cover={<img alt="example" src={`${SERVER_BASE_URL}${portfolio.profile_image}`} />}>
                             <Card.Meta 
                             title={<div style={{position: 'relative', top:'2px'}}>{portfolio.username} 님</div>}
                             description={<Rate defaultValue={portfolio.average_stars} disabled/>}
@@ -71,7 +73,7 @@ const HomePage = () => {
                     {requests.map((request)=>
                         <Card
                         hoverable
-                        cover={<img width='200px' height ='300px' style={{objectFit: 'cover'}}alt="example" src={`http://localhost:8000${request.small_image}`} />}
+                        cover={<img width='200px' height ='300px' style={{objectFit: 'cover'}}alt="example" src={`${SERVER_BASE_URL}${request.small_image}`} />}
                         >
                         <Card.Meta 
                         avatar={<Avatar src={request.profile_image} />} 

@@ -10,6 +10,7 @@ import {Dropdown, DropdownButton} from 'react-bootstrap';
 import './index.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { SERVER_BASE_URL } from '../../utils/constants.js';
 
 function JoinDesignerPage() {
     const [userInfo, setUserInfo] = useState({
@@ -29,7 +30,7 @@ function JoinDesignerPage() {
         console.log(userInfo);
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = token;
-        axios.post('http://localhost:8000/api/auth/register_designer', userInfo, {headers: { "Content-Type": `application/json`}})
+        axios.post(`${SERVER_BASE_URL}/api/auth/register_designer`, userInfo, {headers: { "Content-Type": `application/json`}})
         .then((res) => {
             navigate("/",  { replace: true });
         })

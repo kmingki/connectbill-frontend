@@ -7,28 +7,6 @@ import { Link } from 'react-router-dom';
 import { getPortfolios } from '../../apis/portfolio';
 import PortfolioCard from 'components/PortfolioCard';
 
-const dummy = [{
-    profile_image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxA5cTf-5dh5Eusm0puHbvAhOrCRPtckzjA&usqp=CAU",
-    username:"김커넥",
-    skills:"실내 인테리어",
-    description: "실내인테리어 김커넥 입니다.",
-    projects: [{title:"감성카페 실내인테리어 프로젝트",average_stars:3 },{title:"감성카페 실내인테리어 프로젝트",average_stars:3 },{title:"감성카페 실내인테리어 프로젝트",average_stars:3 }]
-},
-{
-    profile_image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxA5cTf-5dh5Eusm0puHbvAhOrCRPtckzjA&usqp=CAU",
-    username:"김커넥",
-    skills:"실내 인테리어",
-    description: "실내인테리어 김커넥 입니다.",
-    projects: [{title:"감성카페 실내인테리어 프로젝트",average_stars:3 },{title:"감성카페 실내인테리어 프로젝트",average_stars:3 },{title:"감성카페 실내인테리어 프로젝트",average_stars:3 }]
-},
-{
-    profile_image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxA5cTf-5dh5Eusm0puHbvAhOrCRPtckzjA&usqp=CAU",
-    username:"김커넥",
-    skills:"실내 인테리어",
-    description: "실내인테리어 김커넥 입니다.",
-    projects: [{title:"감성카페 실내인테리어 프로젝트",average_stars:3 },{title:"감성카페 실내인테리어 프로젝트",average_stars:3 },{title:"감성카페 실내인테리어 프로젝트",average_stars:3 }]
-}
-]
 const menu = (
     <Menu>
       <Menu.Item>
@@ -42,7 +20,6 @@ const menu = (
       </Menu.Item>
     </Menu>
   );
-
 
 const DesignerPage = () => {
     const [ portfolios, setPortfolios ] = useState([]);
@@ -59,17 +36,6 @@ const DesignerPage = () => {
         }
         
         getPortfoliosList();
-        /*
-        setPortfolios([...portfolios,
-            {
-            "username":"김커넥",
-            "profile_image":'url',
-            "skills":"Front end Developer",
-            "description":"description.....description.....description.....description.....description.....description.....description.....description.....description.....description.....description.....description.....description.....description.....description.....",
-            "projects": [{'title':'title','average_stars': 3},{'title':'title','average_stars': 3}]
-           }
-        ]);
-        */
     }, []);
 
 
