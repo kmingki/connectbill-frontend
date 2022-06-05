@@ -11,5 +11,8 @@ const PanoramaWrapper = styled.div`
     }
 `
 
-
-export {ClientInfoContainer, PanoramaWrapper};
+const ContentWrapper = styled.div`
+    margin: 50px 0;
+    font-size:18px;
+`
+export {ClientInfoContainer, PanoramaWrapper, ContentWrapper };
