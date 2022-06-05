@@ -17,7 +17,7 @@ const postReview = async (data) => {
 const getReview = async (id) => {
 
     try {
-        const result = await instance.post(`/api/review/${id}/review_view_detail/`);//
+        const result = await instance.get(`/api/review/${id}/review_view_detail/`);//
         return result.data;
     } catch (error) {
         console.error(error);

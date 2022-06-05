@@ -68,7 +68,7 @@ const ClientReviewPage = () => {
 
     useEffect(()=>{
         
-        axios.get('${SERVER_BASE_URL}/api/review/review_view/')
+        axios.get(`${SERVER_BASE_URL}/api/review/review_view/`)
         .then((res) => {
             console.log(res.data);
             setReviews(res.data);

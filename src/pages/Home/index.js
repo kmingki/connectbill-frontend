@@ -49,7 +49,7 @@ const HomePage = () => {
                         <li>
                         <div key={index} popol-id={portfolio.id} onClick={()=>onClickPortfolio(portfolio.id)}>
                             <Card
-                            style={{width: '300px'}}
+                            style={{width: '300px', margin:'15px'}}
                             hoverable
                             cover={<img width={'300px'} height ={'300px'} style={{objectFit: 'cover'}} alt="example" src={`${SERVER_BASE_URL}${portfolio.profile_image}`} />}>
                             <Card.Meta 
@@ -75,14 +75,14 @@ const HomePage = () => {
                     {requests.map((request)=>
                     <li>
                     <Card
-                    style={{width: '300px'}}
+                    style={{width: '300px',margin:'15px'}}
                     hoverable
                     cover={<img width={'300px'} height ={'300px'} style={{objectFit: 'cover'}}alt="example" src={`${SERVER_BASE_URL}${request.small_image}`} />}
                     >
                     <Card.Meta 
-                    avatar={<Avatar src={request.profile_image} />} 
-                    title={<div style={{position: 'relative', top:'2px'}}>{request.title}</div>}
-                    description={<>{request.description}</>} /> 
+                    aavatar={<Avatar src={`${SERVER_BASE_URL}${request.userProfileImage}`} />} 
+                    title={<div style={{position: 'relative', top:'2px'}}>{request.username}({request.companyName})</div>}
+                    description={<><Rate defaultValue={request.score} disabled/></>} /> 
                 </Card>
                 </li>
                         )}
