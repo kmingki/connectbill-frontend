@@ -10,7 +10,7 @@ import { getRequest, patchApplyDesigner } from '../../apis/request';
 import { useParams } from 'react-router-dom';
 import { useInput } from '../../utils/useInput.js';
 import { SERVER_BASE_URL } from '../../utils/constants.js';
-
+import defaultProfileImage from '../../assets/user_default_image.png';
 const dummy = {
     'id' : 2,
     'title': '제목',//
@@ -119,7 +119,11 @@ const RequestDetail = () => {
                 
                 <div style={{margin: "10px auto", fontSize: '15px', display:'flex', flexDirection: 'column',
                 justifyContent:'center', alignItems:'center'}}>
-                <Avatar src={`${SERVER_BASE_URL}${request?.commission?.client_profile_image}`}></Avatar>
+                    {
+                        request?.commission?.client_profile_image? 
+                        <Avatar src={`${SERVER_BASE_URL}${request?.commission?.client_profile_image}`}></Avatar> :
+                        <Avatar src={defaultProfileImage}></Avatar>
+                    }
                 <div>{request?.commission?.client_username}</div>
                 <div>{request?.commission?.client_company_name}</div>
                 </div>

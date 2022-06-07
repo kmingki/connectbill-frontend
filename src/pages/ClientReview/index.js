@@ -6,6 +6,7 @@ import 'antd/dist/antd.min.css';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { SERVER_BASE_URL } from '../../utils/constants.js';
+import defaultProfileImage from '../../assets/user_default_image.png';
 
 const menu = (
     <Menu>
@@ -127,8 +128,20 @@ const ClientReviewPage = () => {
                     title={<Link to={`/review/${item.id}`}>{item.brief_title}</Link>}
                     description={<><Rate disabled defaultValue={item.score} /><div style={{marginTop:'10px'}}>{item.brief_description}</div></>}
                     />
-                    <div style={{marginBottom:'10px'}}><Avatar src={`${SERVER_BASE_URL}${item.client_profile_image}`} style={{marginRight:'10px'}}/>{item.designer_username} 님의 작품</div>
-                    <div><Avatar src={`${SERVER_BASE_URL}${item.designer_profile_image}`} style={{marginRight:'10px'}}/>{item.client_username}({item.client_company_name}) 님의 의뢰</div>
+                    <div style={{marginBottom:'10px'}}>
+                        {item.client_profile_image?  
+                        <Avatar src={`${SERVER_BASE_URL}${item.client_profile_image}`} style={{marginRight:'10px'}}/>:
+                         <Avatar src={defaultProfileImage} style={{marginRight:'10px'}}/>}
+                       {item.designer_username} 님의 작품
+                    </div>
+                    <div>
+                        {
+                            item.designer_profile_image ? 
+                            <Avatar src={`${SERVER_BASE_URL}${item.designer_profile_image}`} style={{marginRight:'10px'}}/> :
+                            <Avatar src={defaultProfileImage} style={{marginRight:'10px'}}/>
+                        }
+                        {item.client_username}({item.client_company_name}) 님의 의뢰
+                    </div>
                     
                 </List.Item>
                 )}

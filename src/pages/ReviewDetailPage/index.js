@@ -6,6 +6,7 @@ import {ClientInfoContainer, PanoramaWrapper, ContentWrapper } from './style';
 import { Rate } from 'antd';
 import Avatar from 'components/Avatar';
 import { SERVER_BASE_URL } from '../../utils/constants.js';
+import defaultProfileImage from '../../assets/user_default_image.png';
 /**
  * 
  * 'client_profile_image',
@@ -81,7 +82,11 @@ const ReviewDetailPage = () => {
 
 
         <ContentWrapper style={{display:'flex', padding: '20px 100px', flexDirection: 'column', marginLeft:'600px', borderRadius: '3%', backgroundColor: '#f0f0f1'}}>
-            <Avatar alt="클라이언트 프로필이미지" style={{marginBottom: '40px',width:'200px', height:'200px',objectFit: 'cover' }} src={`${reviewDetail?.review?.client_profile_image}`}></Avatar>
+            {
+                reviewDetail?.review?.client_profile_image?
+                <Avatar alt="클라이언트 프로필이미지" style={{marginBottom: '40px',width:'200px', height:'200px',objectFit: 'cover' }} src={`${SERVER_BASE_URL}${reviewDetail?.review?.client_profile_image}`}></Avatar>:
+                <Avatar alt="클라이언트 프로필이미지" style={{marginBottom: '40px',width:'200px', height:'200px',objectFit: 'cover' }} src={defaultProfileImage}></Avatar>
+            }
             <div>의뢰인 {reviewDetail?.review?.client_username}</div>
             <div>회사명 {reviewDetail?.review?.client_company_name}</div>
             <div>이메일 {reviewDetail?.review?.client_email}</div>
@@ -94,7 +99,12 @@ const ReviewDetailPage = () => {
         <ContentWrapper style={{display:'flex', flexDirection:'column'}}>
                 <h2>디자이너 후기</h2>
                 <div onClick={()=>Navigate(`/portfolio/${reviewDetail?.designer_review?.designer_id}`)}>
-                <Avatar alt="클라이언트 프로필이미지" src={`${SERVER_BASE_URL}${reviewDetail?.designer_review?.designer_profile_image}`}></Avatar>
+                {
+                    reviewDetail?.designer_review?.designer_profile_image?
+                    <Avatar alt="클라이언트 프로필이미지" src={`${SERVER_BASE_URL}${reviewDetail?.designer_review?.designer_profile_image}`}></Avatar>:
+                    <Avatar alt="클라이언트 프로필이미지" src={defaultProfileImage}></Avatar>
+                }
+                
                 </div>
                 <div>{reviewDetail?.designer_review?.designer_username}</div>
                 <div>{reviewDetail?.designer_review?.designer_email}</div>

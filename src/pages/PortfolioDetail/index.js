@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 import Avatar from 'components/Avatar';
 import ProjectCard from 'components/ProjectCard';
 import { SERVER_BASE_URL } from '../../utils/constants.js';
-
+import defaultProfileImage from '../../assets/user_default_image.png';
 const columns = [
     {
       title: '취득 기간',
@@ -76,7 +76,10 @@ const PortfolioDetail = () => {
         <div css={container}>
 
         <UserInfoForm>
-            <Avatar src={`${SERVER_BASE_URL}${userInfo?.portfolio?.designer_profile_image}`} />
+            {userInfo?.portfolio?.designer_profile_image ? 
+            <Avatar src={`${SERVER_BASE_URL}${userInfo?.portfolio?.designer_profile_image}`} /> :
+            <Avatar src={defaultProfileImage} />
+            }
             <div css={userInfoContent}>
                 <h2>{userInfo?.portfolio?.designer_username}님</h2>
                 <div><Rate disabled defaultValue={5}/></div>

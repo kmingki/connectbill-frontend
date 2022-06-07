@@ -12,7 +12,7 @@ import 'antd/dist/antd.min.css';
 import { useNavigate, useLocation, useParams} from 'react-router-dom';
 import { getProfileInfo } from '../../apis/user';
 import { Link } from 'react-router-dom';
-import userImg from '../../assets/user.png';
+import defaultProfileImage from '../../assets/user_default_image.png';
 import { patchSelectDesigner, patchEndCommission } from '../../apis/request';
 import { SERVER_BASE_URL } from '../../utils/constants.js';
 
@@ -71,10 +71,10 @@ const ClientProfile = () => {
         <UserInfoForm>
             {clientInfo?.user?.profile_image?
             <Avatar
-            src={`${clientInfo.user.profile_image}`} />:
+            src={`${SERVER_BASE_URL}${clientInfo.user.profile_image}`} />:
             <Avatar
             style={{width:'200px', height:'200px'}}
-            src={userImg}
+            src={defaultProfileImage}
             shape="square" />
             }
             <div css={userInfoContent}>
@@ -152,7 +152,12 @@ const ClientProfile = () => {
                            <div key={designer.designer_id} 
                           onClick={()=>navigate(`/portfolio/${parseInt(designer.designer_portfolio_id, 10)}`)} 
                           style={{display: 'flex',  alignItems: 'center', margin:'0', padding:'0', cursor:"pointer"}}>
-                          <Avatar style={{width:'50px', height:'50px', marginRight:'10px'}} src={`${SERVER_BASE_URL}${designer.designer_profile_image}`}/>
+                            {
+                                designer?.designer_profile_image? 
+                                <Avatar style={{width:'50px', height:'50px', marginRight:'10px'}} src={`${SERVER_BASE_URL}${designer.designer_profile_image}`}/> :
+                                <Avatar style={{width:'50px', height:'50px', marginRight:'10px'}} src={defaultProfileImage}/>
+                            }
+                          
                           {designer.designer_username} 
                           <Rate style={{marginLeft:'10px', width :'150px'}} disabled defaultValue={designer.designer_average_stars} />   
                           {designer.message}
@@ -262,7 +267,7 @@ const ClientProfile = () => {
             <Avatar 
             src={`${SERVER_BASE_URL}${clientInfo.user.profile_image}`} />:
             <Avatar
-            src={userImg}
+            src={{defaultProfileImage}}
             shape="square" />
             }
             <div style={{margin:"20px 0"}}><Input placeholder="email"></Input></div>

@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import { getProject } from 'apis/project';
 import { postDeleteMessage } from 'apis/user';
 import { SERVER_BASE_URL } from '../../utils/constants.js';
-
+import defaultProfileImage from '../../assets/user_default_image.png';
 const columns = [
     {
       title: '취득 기간',
@@ -105,9 +105,10 @@ const DesignerProfile = () => {
 
         <div style={{display:'flex', justifyContent: 'space-evenly', alignItems: 'center'}}>
         <UserInfoForm>
-            {userInfo?.user?.profile_image &&
-            <Avatar
-            src={`${userInfo?.user?.profile_image}`} />
+            {
+                userInfo?.user?.profile_image ? 
+                <Avatar src={`${SERVER_BASE_URL}${userInfo?.user?.profile_image}`} /> :
+                <Avatar src={defaultProfileImage} />
             }
             <div css={userInfoContent}>
             <h2>{userInfo?.user?.username}님</h2> 

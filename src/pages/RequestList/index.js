@@ -6,7 +6,7 @@ import 'antd/dist/antd.min.css';
 import { Link } from 'react-router-dom';
 import { getRequests } from '../../apis/request';
 import { SERVER_BASE_URL } from '../../utils/constants.js';
-
+import defaultProfileImage from '../../assets/user_default_image.png';
 const menu = (
     <Menu>
       <Menu.Item>
@@ -122,7 +122,10 @@ const RequestList = () => {
                     }
                 >
                     <List.Item.Meta
-                    avatar={<Avatar style={{width:'80px', height:'80px'}}src={`${SERVER_BASE_URL}${item.client_profile_image}`} />}
+                    avatar={item.client_profile_image? 
+                    <Avatar style={{width:'80px', height:'80px'}}src={`${SERVER_BASE_URL}${item.client_profile_image}`} />:
+                    <Avatar style={{width:'80px', height:'80px'}}src={defaultProfileImage} />
+                }
                     title={<Link to={`/request/${item.id}`}><h3 style={{marginLeft:"10px"}}>{item.title}</h3></Link>}
                     description={<div style={{marginLeft:"25px"}}>{item.client_name} 님의 의뢰 ({item.client_company_name})</div>}
                     />

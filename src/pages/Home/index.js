@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { getRequestsMain} from '../../apis/request';
 import { useNavigate } from 'react-router-dom';
 import { SERVER_BASE_URL } from '../../utils/constants.js';
+import defaultProfileImage from '../../assets/user_default_image.png';
 
 const HomePage = () => {
     const [portfolios, setPortfolios] = useState([]);
@@ -51,7 +52,7 @@ const HomePage = () => {
                             <Card
                             style={{width: '300px', margin:'15px'}}
                             hoverable
-                            cover={<img width={'300px'} height ={'300px'} style={{objectFit: 'cover'}} alt="example" src={`${SERVER_BASE_URL}${portfolio.profile_image}`} />}>
+                            cover={<img width={'300px'} height ={'300px'} style={{objectFit: 'cover'}} alt="example" src={portfolio.profile_image ? `${SERVER_BASE_URL}${portfolio.profile_image}` : defaultProfileImage } />}>
                             <Card.Meta 
                             title={<div style={{position: 'relative', top:'2px'}}>{portfolio.username} 님</div>}
                             description={<Rate defaultValue={portfolio.average_stars} disabled/>}
@@ -80,7 +81,10 @@ const HomePage = () => {
                     cover={<img width={'300px'} height ={'300px'} style={{objectFit: 'cover'}}alt="example" src={`${SERVER_BASE_URL}${request.small_image}`} />}
                     >
                     <Card.Meta 
-                    aavatar={<Avatar src={`${SERVER_BASE_URL}${request.userProfileImage}`} />} 
+                    avatar={request?.userProfileImage ? 
+                    <Avatar src={`${SERVER_BASE_URL}${request.userProfileImage}`} /> :
+                    <Avatar src={defaultProfileImage} />
+                    } 
                     title={<div style={{position: 'relative', top:'2px'}}>{request.username}({request.companyName})</div>}
                     description={<><Rate defaultValue={request.score} disabled/></>} /> 
                 </Card>
