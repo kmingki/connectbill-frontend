@@ -172,50 +172,54 @@ const ClientProfile = () => {
         
         </Tabs.TabPane>
 
-            <Tabs.TabPane tab="진행 중인 의뢰서" key="request-processing">
-                    <List
-                    itemLayout="vertical"
-                    size="large"
-                    dataSource={clientInfo?.commissions_started}
-                    renderItem={item => (
-                        <List.Item
-                        key={item.title}
-                        actions={[
-                            <div>{item.budget} 만원</div>,
-                            <div>작업기간  {item.finish_date}개월</div>,
-                            item.current_status === 3 ? 
-                            <Button onClick={()=>navigate(`/WriteReview/${item.id}`)}>리뷰 작성하기</Button>
-                            :
-                            <Button onClick={()=>onClickComplete(item.id)}>완료</Button>
-                        ]}
-                    extra={
-                        <img
-                            width={'200px'}
-                            height={'200px'}
-                            alt="logo"
-                            style={{objectFit: 'cover'}}
-                            src={`${SERVER_BASE_URL}${item.small_image}`}
-                            />
-                    }
-                >
-                <List.Item.Meta
-                    title={<><Link to={`/portfolio/${item.id}`}>{item.title}</Link>
-                    {
-                        item.current_status === 3 ? 
-                        <Badge status="success" text="작업완료" style={{margin:'0 15px'}}/> : 
-                        <Badge status="processing" text="진행중" style={{margin:'0 15px'}}/>
-                    }
-                    <span style={{backgroundColor: '#f0f0f1', borderRadius: '5%', padding:'5px'}}>{item.designer_username}님과 진행중</span></>}
-                    description={<div>작업기한  {item.deadline} </div>}
-                />
-                {item.brief_description} 
-            {
-                item?.request_designer?.length === 0 && <div style={{fontWeight:'500',padding:'10px', marginTop:'20px', border:'1px solid #f0f0f1'}}>아직 지원한 디자이너가 없어요!</div>
+            <Tabs.TabPane tab="진행 중인 의뢰서" key="request-processing">\
+
+            {clientInfo?.commissions_started && 
+            <List
+            itemLayout="vertical"
+            size="large"
+            dataSource={clientInfo?.commissions_started}
+            renderItem={item => (
+                <List.Item
+                key={item.title}
+                actions={[
+                    <div>{item.budget} 만원</div>,
+                    <div>작업기간  {item.finish_date}개월</div>,
+                    item.current_status === 3 ? 
+                    <Button onClick={()=>navigate(`/WriteReview/${item.id}`)}>리뷰 작성하기</Button>
+                    :
+                    <Button onClick={()=>onClickComplete(item.id)}>완료</Button>
+                ]}
+            extra={
+                <img
+                    width={'200px'}
+                    height={'200px'}
+                    alt="logo"
+                    style={{objectFit: 'cover'}}
+                    src={`${SERVER_BASE_URL}${item.small_image}`}
+                    />
             }
-            
-            </List.Item>
-        )}
+        >
+        <List.Item.Meta
+            title={<><Link to={`/portfolio/${item.id}`}>{item.title}</Link>
+            {
+                item.current_status === 3 ? 
+                <Badge status="success" text="작업완료" style={{margin:'0 15px'}}/> : 
+                <Badge status="processing" text="진행중" style={{margin:'0 15px'}}/>
+            }
+            <span style={{backgroundColor: '#f0f0f1', borderRadius: '5%', padding:'5px'}}>{item.designer_username}님과 진행중</span></>}
+            description={<div>작업기한  {item.deadline} </div>}
         />
+        {item.brief_description} 
+    {
+        item?.request_designer?.length === 0 && <div style={{fontWeight:'500',padding:'10px', marginTop:'20px', border:'1px solid #f0f0f1'}}>아직 지원한 디자이너가 없어요!</div>
+    }
+    
+    </List.Item>
+)}
+/>
+            }
+                    
             </Tabs.TabPane>
 
             <Tabs.TabPane tab="리뷰" key="review">
