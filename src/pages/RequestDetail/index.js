@@ -147,7 +147,7 @@ const RequestDetail = () => {
         </ContentContainer>
         
         </Container>
-        <Modal title="Basic Modal" visible={isModalVisible} okText={"메세지 보내기"} onOk={handleOk} 
+        <Modal title="의뢰 지원하기" visible={isModalVisible} okText={"메세지 보내기"} onOk={handleOk} 
         onCancel={()=>setIsModalVisible(false)}>
         <Input placeholder="메세지를 입력해주세요!" value={message} onChange={onChangeMessage}/>
       </Modal>
