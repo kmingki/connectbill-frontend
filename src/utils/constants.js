@@ -1,3 +1,3 @@
-const SERVER_BASE_URL = 'https://connectbillssu2022.herokuapp.com';
+const SERVER_BASE_URL = 'https://connectbill.herokuapp.com';
 
 export { SERVER_BASE_URL };

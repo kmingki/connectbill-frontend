@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-    baseURL: "https://connectbillssu2022.herokuapp.com",
+    baseURL: "https://connectbill.herokuapp.com",
     withCredentials: true,
 });
+
+//https://connectbill.herokuapp.com/
