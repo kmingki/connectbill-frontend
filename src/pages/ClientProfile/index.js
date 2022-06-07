@@ -172,7 +172,7 @@ const ClientProfile = () => {
         
         </Tabs.TabPane>
 
-            <Tabs.TabPane tab="진행 중인 의뢰서" key="request-processing">\
+            <Tabs.TabPane tab="진행 중인 의뢰서" key="request-processing">
 
             {clientInfo?.commissions_started && 
             <List
